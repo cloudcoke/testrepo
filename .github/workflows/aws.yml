@@ -31,5 +31,5 @@ jobs:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
-          source: "$GITHUB_WORKSPACE/front/build/"
+          source: "/home/runner/work/testrepo/testrepo/front/build/"
           target: "/home/${{ secrets.EC2_USERNAME }}/www"

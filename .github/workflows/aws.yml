@@ -18,10 +18,9 @@ jobs:
           cd front
           npm install
           npm run build
-          echo ${{ secrets.EC2_PRIVATE_KEY }} > ec2_key.pem
+          echo ${{ secrets.EC2_PRIVATE_KEY }} | tr -d '\r' > ec2_key.pem
           chmod 400 ec2_key.pem
-          cat ec2_key.pem
-          scp -i ec2_key.pem -r ./build ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/ubuntu/www
+          scp -i ec2_key.pem -r ./build ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/www
 
       # - name: Copy files to EC2 instance
       #   uses: appleboy/scp-action@master

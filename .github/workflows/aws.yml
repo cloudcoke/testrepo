@@ -16,9 +16,11 @@ jobs:
           path: "front"
 
       - name: Install dependencies
+        working-directory: ./front
         run: npm install
 
       - name: Build React app
+        working-directory: ./front
         run: npm run build
 
       - name: Copy files to EC2 instance

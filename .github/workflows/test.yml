@@ -15,7 +15,7 @@ jobs:
 
       # Frontend 빌드 & 배포
       - name: Frontend deployment
-        if: ${{ github.event.head_commit.modified_files | contains('front/') }}
+        if: ${{ contains(github.event.head_commit.modified_files, 'front/') }}
         env:
           TARGET_DIR: "/home/${{ secrets.EC2_USERNAME }}/www/front"
         run: |

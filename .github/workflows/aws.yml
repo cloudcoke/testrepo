@@ -15,7 +15,8 @@ jobs:
 
       - name: Install dependencies
         run: |
-          cd front & ls
+          cd front
+          ls
       # - name: Build React app
       #   working-directory: ./front
       #   run: npm run build

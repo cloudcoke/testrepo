@@ -22,7 +22,7 @@ jobs:
           cd front
           npm install
           npm run build
-          ls -al
+          ls -al build
 
       - name: SCP
         uses: appleboy/scp-action@master

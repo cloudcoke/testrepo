@@ -20,4 +20,4 @@ jobs:
           npm run build
           echo ${{ secrets.EC2_PRIVATE_KEY }} | tr -d '\r' > $GITHUB_WORKSPACE/front/ec2_key.pem
           chmod 400 $GITHUB_WORKSPACE/front/ec2_key.pem
-          scp -i $GITHUB_WORKSPACE/front/ec2_key.pem -o "StrictHostKeyChecking=no" -r ./build ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/www
+          scp -i $GITHUB_WORKSPACE/front/ec2_key.pem -o "StrictHostKeyChecking=no" -r $GITHUB_WORKSPACE/front/build ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:/home/${{ secrets.EC2_USERNAME }}/www

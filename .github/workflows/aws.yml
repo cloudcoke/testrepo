@@ -12,13 +12,9 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-        with:
-          path: "front"
 
       - name: Install dependencies
-        working-directory: ./front
-        # run: npm install
-        run: ls -l
+        run: cd front & npm install
 
       # - name: Build React app
       #   working-directory: ./front

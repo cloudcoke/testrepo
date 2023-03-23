@@ -1,11 +1,9 @@
-name: Deploy to EC2 instance
+name: Deploy
 
 on:
   push:
     branches:
       - main
-    paths:
-      - "front/**"
 
 jobs:
   deploy:
@@ -15,17 +13,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Install dependencies
-        working-directory: front
+      # Frontend 빌드 & 배포
+      - name: Frontend deployment
+        if: ${{ github.event.head_commit.modified_files | contains('front/') }}
+        env:
+          TARGET_DIR: "/home/${{ secrets.EC2_USERNAME }}/www/front"
         run: |
+          cd front
           npm install
           npm run build
-
-      - name: SCP
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USERNAME }}
-          key: ${{ secrets.EC2_PRIVATE_KEY }}
-          source: "front/build"
-          target: "/home/${{ secrets.EC2_USERNAME }}/www"
+          echo "build fin"
+          scp -r -i ${{ secrets.EC2_PRIVATE_KEY }} -o "StrictHostKeyChecking=no" ./build ${{ secrets.EC2_USERNAME }}@${{ secrets.EC2_HOST }}:$TARGET_DIR

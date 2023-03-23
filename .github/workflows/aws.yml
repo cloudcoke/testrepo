@@ -17,9 +17,9 @@ jobs:
         run: |
           cd front
           ls
-      # - name: Build React app
-      #   working-directory: ./front
-      #   run: npm run build
+          npm install
+      - name: Build React app
+        run: npm run build
 
       # - name: Copy files to EC2 instance
       #   uses: appleboy/scp-action@master

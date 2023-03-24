@@ -28,3 +28,11 @@ jobs:
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           source: "back"
           target: "/home/${{ secrets.EC2_USERNAME }}/www"
+
+      - name: Node Restart
+        uses: appleboy/ssh-action@v0.1.8
+        with:
+          host: ${{ secrets.EC2_BACK_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: echo "hello" > test.txt

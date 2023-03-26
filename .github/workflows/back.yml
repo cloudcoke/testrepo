@@ -27,4 +27,4 @@ jobs:
           username: ${{ secrets.EC2_USERNAME }}
           key: ${{ secrets.EC2_PRIVATE_KEY }}
           source: "back"
-          target: "/home/${{ secrets.EC2_USERNAME }}/www"
+          target: "www"

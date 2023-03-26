@@ -1,5 +1,5 @@
 const App = () => {
-  return <>이게 되나?</>
+  return <>이건?</>
 }
 
 export default App

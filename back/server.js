@@ -6,6 +6,6 @@ app.get("/", (req, res, next) => {
   res.send(test)
 })
 
-app.listen(3031, () => {
-  console.log("Server Start 3031")
+app.listen(3000, () => {
+  console.log("Server Start 3000")
 })

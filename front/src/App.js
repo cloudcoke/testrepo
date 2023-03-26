@@ -1,5 +1,5 @@
 const App = () => {
-  return <>이건?</>
+  return <>build만?</>
 }
 
 export default App

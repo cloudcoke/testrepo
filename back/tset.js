@@ -1,3 +1,3 @@
-const test = "hello hello hello hi"
+const test = "hello"
 
 module.exports = test
